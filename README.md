@@ -11,6 +11,4 @@ and the project repository (github)
 
 We searched for many stakeholders, collected a lot of user stories according to their needs, and finally summarized and screened out the feature we want to do (xmind)
 
-![Chat Health.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a3a4d81f-1ff7-47df-89d8-4306e8009ecc/Chat_Health.png)
-
 According to these features, we have made milestones and schedules (put milestone and tasks)
