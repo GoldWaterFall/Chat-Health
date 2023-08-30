@@ -2,8 +2,10 @@
 
 Just run demo1.py which is the center program for this project, before successfully run the codes, you need to ensure the required modules has been installed, the python environment for this code is Python==3.7, the required modules include:
 
-easygui==0.98.3/n
-face_recognition==1.3.0/n
+easygui==0.98.3
+
+face_recognition==1.3.0
+
 opencv_python==3.4.2.17
 
 It need to be clarified that you may meet some problem when downloading the face_recognition module, you may need to download dlib and cmake module before it, here is a reference (https://blog.csdn.net/qq_43466323/article/details/120855699) for installing them, we use the third method to solve this problem. Also, we recommend to create an virtual environment with Anaconda to avoid version conflict.
