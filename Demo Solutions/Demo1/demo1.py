@@ -1,0 +1,22 @@
+import easygui as gui
+import sys
+import demo1_register
+import demo1_matcher
+
+
+# main running function for demo1
+def demo1_run():
+    enter = gui.buttonbox(msg='Welcome to Chat Health, what can we do for you?', title='Chat Health platform',
+                          choices=('register & appoint', 'meet with doctor', 'quit'))
+    # for register and appoint function
+    if enter == 'register & appoint':
+        demo1_register.start()
+    # for face matching
+    elif enter == 'meet with doctor':
+        demo1_matcher.start()
+    # end the use of demo1
+    else:
+        gui.msgbox(msg='The platform service is ending', title='Chat Health platform', ok_button='OK')
+        sys.exit(0)
+
+demo1_run()
