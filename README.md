@@ -1,14 +1,9 @@
 # Chat-Health
+This project "Chat Health" aims at creating a platform for the Chinese market dedicated to facilitating online consultation and registration for patients. We want to solve this core problem:
 
-Our product name is Chat Health, which is a platform dedicated to facilitating online consultation and registration for patients. There are three core problems we want to solve:
-One is to ensure the convenience of patients' medical consultation through web technology, and use TRTC technology to realize paid video consultation.
-The second is to ensure the fairness of patients' medical treatment through AI technology, and through the introduction of face recognition and static living body recognition technology, to ensure that patients register themselves, and to crack down on scalpers reselling registration orders.
-The third is to ensure that the privacy data of patients are protected, use Minio to build private cloud storage, and save patient records, X-ray photos, medical certificates, etc.
+By looking for a suitable solution to ensure the fairness of patients' medical treatment, through the comparison and selection of a large number of identification and authentication methods, the most suitable solution is finalized to ensure that patients can register themselves and crack down on scalpers reselling registration orders.
 
-At present, we have done a good job of task management (see the task of notion)
-Development tool settings (written under the notion task)
-and the project repository (github)
+This website serves as the code repository of our project during the whole development process. All codes of this project will be uploaded to this webiste continuously to ensure the credibility and transparency of our project programming process, and we will provide instruction for visiters about how to run and use these codes on their own computer.
 
-We searched for many stakeholders, collected a lot of user stories according to their needs, and finally summarized and screened out the feature we want to do (xmind)
+For more information about this project's background and progress, please visit our homepage on Notion: https://chathealth.notion.site/Computing-Project-Chat-Health-aca913f745784ee8bc74504a27dc789c?pvs=4.
 
-According to these features, we have made milestones and schedules (put milestone and tasks)
