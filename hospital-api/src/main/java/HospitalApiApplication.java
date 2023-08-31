@@ -6,11 +6,11 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
 
-@EnableAsync
+//@EnableAsync
 @ServletComponentScan
 @ComponentScan("com.example.*")
 @MapperScan("com.example.hospital.api.db.dao")
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+//@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class HospitalApiApplication {
 
 
