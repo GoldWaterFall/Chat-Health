@@ -8,12 +8,12 @@ import javax.validation.constraints.Pattern;
 
 @Data
 public class LoginForm {
-    @NotBlank(message = "username不能为空")
-    @Pattern(regexp = "^[a-zA-Z0-9]{5,50}$", message = "username内容不正确")
+    @NotBlank(message = "username can not be null")
+    @Pattern(regexp = "^[a-zA-Z0-9]{5,50}$", message = "username is not correct")
     private String username;
 
-    @NotBlank(message = "password不能为空")
-    @Pattern(regexp = "^[a-zA-Z0-9]{6,20}$", message = "password内容不正确")
+    @NotBlank(message = "password can not be null")
+    @Pattern(regexp = "^[a-zA-Z0-9]{6,20}$", message = "password is not correct")
     private String password;
 }
 

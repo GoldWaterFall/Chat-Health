@@ -12,4 +12,10 @@
         )
     </insert>
 
+    <update id="updateDoctorSubDept" parameterType="Map">
+        UPSERT INTO HOSPITAL.MEDICAL_DEPT_SUB_AND_DOCTOR("id", "dept_sub_id")
+        SELECT "id", ${subId} FROM HOSPITAL.MEDICAL_DEPT_SUB_AND_DOCTOR
+        WHERE "doctor_id" = ${doctorId}
+    </update>
+
 </mapper>

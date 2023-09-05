@@ -6,12 +6,21 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author ShiqiDing
+ */
 public interface DoctorService {
     public PageUtils searchByPage(Map param);
     public HashMap searchContent(int id);
 
     public void updatePhoto(MultipartFile file, Integer doctorId);
 
+    public void insert(Map param);
 
+
+    public HashMap searchById(int id);
+    public void update(Map param);
+
+    public void deleteByIds(Integer[] ids);
 }
 

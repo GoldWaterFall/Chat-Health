@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.Map;
 
+/**
+ * @author ShiqiDing
+ */
 @Service
 public class MisUserServiceImpl implements MisUserService {
 

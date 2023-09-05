@@ -1,10 +1,14 @@
 package com.example.hospital.api.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONUtil;
 import com.example.hospital.api.common.PageUtils;
 import com.example.hospital.api.db.dao.DoctorDao;
+import com.example.hospital.api.db.dao.MedicalDeptSubAndDoctorDao;
+import com.example.hospital.api.db.pojo.DoctorEntity;
+import com.example.hospital.api.db.pojo.MedicalDeptSubAndDoctorEntity;
 import com.example.hospital.api.exception.HospitalException;
 import com.example.hospital.api.service.DoctorService;
 import io.minio.MinioClient;
@@ -20,6 +24,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author ShiqiDing
+ */
 @Service
 @Slf4j
 public class DoctorServiceImpl implements DoctorService {
@@ -49,6 +56,8 @@ public class DoctorServiceImpl implements DoctorService {
             map.replace("tag", tag);
             return map;
     }
+
+
     @Value("${minio.endpoint}")
     private String endpoint;
 
@@ -63,7 +72,7 @@ public class DoctorServiceImpl implements DoctorService {
     public void updatePhoto(MultipartFile file, Integer doctorId) {
         try {
             String filename = "doctor-" + doctorId + ".jpg";
-            //在Minio中保存医生照片
+            //Save doctor photos in Minio
             MinioClient client = new MinioClient.Builder().endpoint(endpoint)
                     .credentials(accessKey, secretKey).build();
 
@@ -72,18 +81,64 @@ public class DoctorServiceImpl implements DoctorService {
                     .stream(file.getInputStream(), -1, 5 * 1024 * 1024)
                     .contentType("image/jpeg").build());
 
-            //更新医生表photo字段
+            //Update the doctor table photo field
             doctorDao.updatePhoto(new HashMap() {{
                 put("id", doctorId);
                 put("photo", "/doctor/" + filename);
             }});
         } catch (Exception e) {
-            log.error("保存医生照片失败", e);
-            throw new HospitalException("保存医生照片失败");
+            log.error("Failed to save doctor photo", e);
+            throw new HospitalException("Failed to save doctor photo");
         }
     }
 
 
+    @Resource
+    private MedicalDeptSubAndDoctorDao medicalDeptSubAndDoctorDao;
 
+
+    @Override
+    public void insert(Map param) {
+        //keep doctor records
+        DoctorEntity entity_1 = BeanUtil.toBean(param, DoctorEntity.class);
+        doctorDao.insert(entity_1);
+
+        //Query the doctor's primary key value according to uuid
+        String uuid = entity_1.getUuid();
+        Integer doctorId = doctorDao.searchIdByUuid(uuid);
+
+        //Keep doctor's office records
+        int subId = MapUtil.getInt(param, "subId");
+        MedicalDeptSubAndDoctorEntity entity_2 = new MedicalDeptSubAndDoctorEntity();
+        entity_2.setDeptSubId(subId);
+        entity_2.setDoctorId(doctorId);
+        medicalDeptSubAndDoctorDao.insert(entity_2);
+    }
+
+
+    @Override
+    public HashMap searchById(int id) {
+        HashMap map = doctorDao.searchById(id);
+        String tag = MapUtil.getStr(map, "tag");
+        JSONArray array = JSONUtil.parseArray(tag);
+        map.replace("tag", array);
+        return map;
+    }
+
+    @Override
+    @Transactional
+    public void update(Map param) {
+        doctorDao.update(param);
+        param = MapUtil.renameKey(param, "id", "doctorId");
+        medicalDeptSubAndDoctorDao.updateDoctorSubDept(param);
+    }
+
+
+
+    @Override
+    @Transactional
+    public void deleteByIds(Integer[] ids) {
+        doctorDao.deleteByIds(ids);
+    }
 
 }
