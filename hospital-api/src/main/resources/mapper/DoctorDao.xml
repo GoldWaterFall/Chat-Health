@@ -154,6 +154,14 @@
             ${one}
         </foreach>
     </update>
+    <select id="searchByDeptSubId" parameterType="int" resultType="HashMap">
+        SELECT d."id" AS "id",
+        d."name" AS "name"
+        FROM HOSPITAL.DOCTOR d
+        JOIN HOSPITAL.MEDICAL_DEPT_SUB_AND_DOCTOR sd ON sd."doctor_id" = d."id"
+        WHERE sd."dept_sub_id" = ${deptSubId}
+        AND d."status" = 1
+    </select>
 
 
 </mapper>

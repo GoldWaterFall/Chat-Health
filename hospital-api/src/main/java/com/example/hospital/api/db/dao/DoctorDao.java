@@ -22,6 +22,7 @@ public interface DoctorDao {
 
     public void deleteByIds(Integer[] ids);
 
+    public ArrayList<HashMap> searchByDeptSubId(int deptSubId);
 
 
 }

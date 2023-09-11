@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+
 @Service
 public class MedicalDeptSubServiceImpl implements MedicalDeptSubService {
     @Resource
@@ -59,5 +60,7 @@ public class MedicalDeptSubServiceImpl implements MedicalDeptSubService {
             throw new HospitalException("There is an associated doctor in the clinic and the record cannot be deleted.");
         }
     }
+
+
 }
 
