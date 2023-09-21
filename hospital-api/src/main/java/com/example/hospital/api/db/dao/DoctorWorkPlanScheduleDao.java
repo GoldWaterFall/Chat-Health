@@ -11,8 +11,10 @@ public interface DoctorWorkPlanScheduleDao {
     public void insert(DoctorWorkPlanScheduleEntity entity);
     public ArrayList<HashMap> searchNewSchedule(int workPlanId);
     public ArrayList<HashMap> searchDeptSubSchedule(Map param);
+    public ArrayList<HashMap> searchByWorkPlanId(int workPlanId);
 
-
+    public long searchSumNumByIds(ArrayList<Integer> ids);
+    public void deleteByIds(ArrayList<Integer> ids);
 }
 
 

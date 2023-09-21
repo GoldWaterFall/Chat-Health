@@ -41,5 +41,9 @@
         TO_DATE('${date}'), ${maximum}, 0
         )
     </insert>
+    <update id="updateMaximum" parameterType="Map">
+        UPSERT INTO HOSPITAL.DOCTOR_WORK_PLAN("id", "maximum")
+        VALUES(${workPlanId}, ${maximum})
+    </update>
 
 </mapper>
