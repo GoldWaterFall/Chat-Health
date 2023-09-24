@@ -31,7 +31,7 @@
                 >
                     <el-option label="PHD" value="PHD" />
                     <el-option label="Postgraduate" value="Postgraduate" />
-                    <el-option label="undergraduate" value="undergraduate" />
+                    <el-option label="Undergraduate" value="Undergraduate" />
                 </el-select>
             </el-form-item>
             <el-form-item>
@@ -368,6 +368,58 @@ export default {
 			}
 			else{
 				that.expands=[]
+			}
+		},
+		updatePhotoSuccess:function(){
+			this.content.photo=`${this.$minioUrl}/doctor/doctor-${this.content.id}.jpg?random=${Math.random()}`
+		},
+		updatePhotoError:function(){
+			ElMessage(
+			{
+				message:'Fail to Upload the file',
+				type:'error',
+				duration:1200
+			})
+		},
+		addHandler:function(){
+			this.$nextTick(()=>{
+				this.$refs.addOrUpdate.init()
+			})
+		},
+		updateHandle:function(id){
+			this.$nextTick(()=>{
+				this.$refs.addOrUpdate.init(id)
+			})
+		},
+		deleteHandle:function(id){
+			let that = this
+			let ids = id?[id]:that.dataListSelections.map(item=>{
+				return item.id
+			})
+			if(ids.length == 0){
+				ElMessage({
+					message:'No records selected',
+					type:'warning',
+					duration:1200
+				});
+			}
+			else{
+				that.$confirm('Are you sure to delete the selected records?','prompt',{
+					confirmButtonText:'Yes',
+					cancelButtonText:'No',
+					type:'warning'
+				}).then(()=>{
+					that.$http('/doctor/deleteByIds','POST',{ids : ids}, true,function(resp){
+						ElMessage({
+							message:'Successful',
+							type:'success',
+							duration:1200,
+							onClose:()=>{
+								that.loadDataList();
+							}
+						})
+					})
+				})
 			}
 		}
         
