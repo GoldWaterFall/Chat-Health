@@ -4,7 +4,7 @@
             <el-form-item prop="name">
                 <el-input
                     v-model="dataForm.name"
-                    placeholder="姓名"
+                    placeholder="Name"
                     size="medium"
                     class="input"
                     clearable="clearable"
@@ -14,7 +14,7 @@
                 <el-select
                     v-model="dataForm.deptId"
                     class="input"
-                    placeholder="科室"
+                    placeholder="Department"
                     size="medium"
                     clearable="clearable"
                 >
@@ -25,38 +25,38 @@
                 <el-select
                     v-model="dataForm.degree"
                     class="input"
-                    placeholder="学历"
+                    placeholder="Academic Qualifications"
                     size="medium"
                     clearable="clearable"
                 >
-                    <el-option label="博士" value="博士" />
-                    <el-option label="研究生" value="研究生" />
-                    <el-option label="本科" value="本科" />
+                    <el-option label="PHD" value="PHD" />
+                    <el-option label="Postgraduate" value="Postgraduate" />
+                    <el-option label="undergraduate" value="undergraduate" />
                 </el-select>
             </el-form-item>
             <el-form-item>
                 <el-select v-model="dataForm.job" class="input" placeholder="职位" size="medium" clearable="clearable">
-                    <el-option label="主任医师" value="主任医师" />
-                    <el-option label="副主任医师" value="副主任医师" />
-                    <el-option label="主治医师" value="主治医师" />
-                    <el-option label="副主治医师" value="副主治医师" />
+                    <el-option label="Chief Physician" value="Chief Physician" />
+                    <el-option label="Associate Chief Physician" value="Associate Chief Physician" />
+                    <el-option label="Resident Physician" value="Resident Physician" />
+                    <el-option label="Assistant Resident Physician" value="Assistant Resident Physician" />
                 </el-select>
             </el-form-item>
             <el-form-item>
-                <el-select v-model="dataForm.recommended" class="input" placeholder="推荐级别" clearable="clearable">
-                    <el-option label="优先" value="true" />
-                    <el-option label="非优先" value="false" />
+                <el-select v-model="dataForm.recommended" class="input" placeholder="Recommendation Level" clearable="clearable">
+                    <el-option label="priority" value="true" />
+                    <el-option label="non-priority" value="false" />
                 </el-select>
             </el-form-item>
             <el-form-item>
-                <el-button size="medium" type="primary" @click="searchHandle()">查询</el-button>
+                <el-button size="medium" type="primary" @click="searchHandle()">Search</el-button>
                 <el-button
                     size="medium"
                     type="primary"
                     :disabled="!isAuth(['ROOT', 'DOCTOR:INSERT'])"
                     @click="addHandle()"
                 >
-                    新增
+                    Add
                 </el-button>
                 <el-button
                     size="medium"
@@ -64,14 +64,14 @@
                     :disabled="!isAuth(['ROOT', 'DOCTOR:DELETE'])"
                     @click="deleteHandle()"
                 >
-                    批量删除
+                    Mass Delete
                 </el-button>
             </el-form-item>
             <div style="float: right">
                 <el-radio-group v-model="dataForm.status" @change="searchHandle()">
-                    <el-radio-button label="在职" />
-                    <el-radio-button label="离职" />
-                    <el-radio-button label="退休" />
+                    <el-radio-button label="Employed" />
+                    <el-radio-button label="Resigned" />
+                    <el-radio-button label="Retired" />
                 </el-radio-group>
             </div>
         </el-form>
@@ -93,9 +93,9 @@
                     <div>
                         <table class="content">
                             <tr>
-                                <th width="140">身份证号</th>
+                                <th width="140">Id Number</th>
                                 <td width="320">{{ content.pid }}</td>
-                                <th width="140">出生日期</th>
+                                <th width="140">Date of Birth</th>
                                 <td width="320">{{ content.birthday }}</td>
                                 <td width="110" rowspan="3" align="center">
                                     <el-upload
@@ -119,27 +119,27 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>医师编号</th>
+                                <th>Physician ID</th>
                                 <td>{{ content.uuid }}</td>
-                                <th>入职日期</th>
+                                <th>Date of Hire</th>
                                 <td>{{ content.hiredate }}</td>
                             </tr>
                             <tr>
-                                <th>电子信箱</th>
+                                <th>Email</th>
                                 <td>{{ content.email }}</td>
-                                <th>备注信息</th>
+                                <th>Notes</th>
                                 <td>{{ content.remark }}</td>
                             </tr>
                             <tr>
-                                <th>标签描述</th>
+                                <th>Discription of the label</th>
                                 <td>
                                     <el-tag v-for="one of content.tag">{{ one }}</el-tag>
                                 </td>
-                                <th>家庭住址</th>
+                                <th>Addre</th>
                                 <td colspan="2">{{ content.address }}</td>
                             </tr>
                             <tr>
-                                <th>介绍信息</th>
+                                <th>Introduction</th>
                                 <td colspan="4">{{ content.description }}</td>
                             </tr>
                         </table>
@@ -147,7 +147,7 @@
                 </template>
             </el-table-column>
             <el-table-column type="selection" header-align="center" align="center" width="50" />
-            <el-table-column type="index" header-align="center" align="center" width="100" label="序号">
+            <el-table-column type="index" header-align="center" align="center" width="100" label="SN">
                 <template #default="scope">
                     <span>{{ (pageIndex - 1) * pageSize + scope.$index + 1 }}</span>
                 </template>
@@ -157,18 +157,18 @@
                 header-align="center"
                 align="center"
                 min-width="120"
-                label="姓名"
+                label="Name"
                 :show-overflow-tooltip="true"
             />
-            <el-table-column prop="sex" header-align="center" align="center" min-width="70" label="性别" />
-            <el-table-column prop="tel" header-align="center" align="center" min-width="120" label="电话" />
-            <el-table-column prop="job" header-align="center" align="center" min-width="100" label="职务" />
+            <el-table-column prop="sex" header-align="center" align="center" min-width="70" label="sex" />
+            <el-table-column prop="tel" header-align="center" align="center" min-width="120" label="tel" />
+            <el-table-column prop="job" header-align="center" align="center" min-width="100" label="job" />
             <el-table-column
                 prop="deptName"
                 header-align="center"
                 align="center"
                 min-width="120"
-                label="科室"
+                label="Department"
                 :show-overflow-tooltip="true"
                 sortable
             />
@@ -177,7 +177,7 @@
                 header-align="center"
                 align="center"
                 min-width="120"
-                label="诊室"
+                label="Examination Room"
                 :show-overflow-tooltip="true"
             />
             <el-table-column
@@ -185,11 +185,11 @@
                 header-align="center"
                 align="center"
                 min-width="170"
-                label="毕业学校"
+                label="Graduation School"
                 :show-overflow-tooltip="true"
             />
-            <el-table-column prop="degree" header-align="center" align="center" min-width="100" label="学历" />
-            <el-table-column prop="status" header-align="center" align="center" min-width="80" label="状态" />
+            <el-table-column prop="degree" header-align="center" align="center" min-width="100" label="Academic Qualifications" />
+            <el-table-column prop="status" header-align="center" align="center" min-width="80" label="Status" />
             <el-table-column header-align="center" align="center" width="150" label="操作">
                 <template #default="scope">
                     <el-button
@@ -198,7 +198,7 @@
                         :disabled="!isAuth(['ROOT', 'DOCTOR:UPDATE'])"
                         @click="updateHandle(scope.row.id)"
                     >
-                        修改
+                        Edit
                     </el-button>
                     <el-button
                         type="text"
@@ -206,7 +206,7 @@
                         :disabled="!isAuth(['ROOT', 'DOCTOR:DELETE'])"
                         @click="deleteHandle(scope.row.id)"
                     >
-                        删除
+                        Delete
                     </el-button>
                 </template>
             </el-table-column>
@@ -240,7 +240,7 @@ export default {
                 degree: '',
                 job: '',
                 recommended: '',
-                status: '在职',
+                status: 'Employed',
                 order: null
             },
             dataList: [],
@@ -251,7 +251,7 @@ export default {
             dataListLoading: false,
             dataListSelections: [],
             dataRule: {
-                name: [{ required: false, pattern: '^[\u4e00-\u9fa5]{1,10}$', message: '姓名格式错误' }]
+                name: [{ required: false, pattern: '^[\u4e00-\u9fa5]{1,10}$', message: 'Name format is incorrect' }]
             },
             expands: [],
             getRowKeys(row) {
@@ -317,6 +317,58 @@ export default {
 		currentChangeHandle:function(val){
 			this.pageIndex=val
 			this.loadDateList()
+		},
+		searchHandler:function(){
+			this.$refs['dataForm'].validate(valid => {
+				if(valid){
+					this.$refs['dataForm'].clearValidate();
+					if(this.pageIndex != 1){
+						this.pageIndex = 1;
+					}
+				this.loadDateList();
+			} else {
+				return false;
+				}
+			});
+		},
+		orderHandler:function(param){
+			let prop = param.prop;
+			let order = param.order;
+			if (order == 'ascending') {
+				this.dataForm.order = 'ASC';
+			} else if (order == 'descending') {
+				this.dataForm.order = 'DESC';
+			} else {
+				return;
+			}
+			this.dataList = [];
+			this.loadDateList();
+		},
+		expand: function(row,expandedRows){
+			let that = this;
+			if (expandedRows.length > 0) {
+				that.expands = []
+				that.expands.push(row.id)
+				let data = {
+					id:row.id
+				}
+				that.$http("/doctor/searchContent","POST",data,false,function(resp){
+					that.content.id = row.id
+					that.content.photo = `${that.$minioUrl}${resp.photo}?random=${Math.random()}`
+					that.content.pid = resp.pid;
+					that.content.birthday = resp.birthday;
+					that.content.uuid = resp.uuid;
+					that.content.hiredate = resp.hiredate;
+					that.content.email = resp.email;
+					that.content.remark = resp.remark;
+					that.content.tag = resp.tag;
+					that.content.address = resp.address;
+					that.content.description = resp.description;
+				})
+			}
+			else{
+				that.expands=[]
+			}
 		}
         
     },
