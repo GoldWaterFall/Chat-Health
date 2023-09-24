@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: cn.felord:payment-spring-boot-starter:1.0.13.RELEASE">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/cn/felord/payment-spring-boot-starter/1.0.13.RELEASE/payment-spring-boot-starter-1.0.13.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/cn/felord/payment-spring-boot-starter/1.0.13.RELEASE/payment-spring-boot-starter-1.0.13.RELEASE-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/cn/felord/payment-spring-boot-starter/1.0.13.RELEASE/payment-spring-boot-starter-1.0.13.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
