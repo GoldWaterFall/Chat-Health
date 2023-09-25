@@ -15,6 +15,7 @@ public interface DoctorWorkPlanScheduleDao {
 
     public long searchSumNumByIds(ArrayList<Integer> ids);
     public void deleteByIds(ArrayList<Integer> ids);
+    public void deleteByWorkPlanId(int workPlanId);
 }
 
 

@@ -10,9 +10,11 @@ import cn.hutool.json.JSONUtil;
 import com.example.hospital.api.db.dao.DoctorWorkPlanDao;
 import com.example.hospital.api.db.pojo.DoctorWorkPlanEntity;
 import com.example.hospital.api.db.pojo.DoctorWorkPlanScheduleEntity;
+import com.example.hospital.api.exception.HospitalException;
 import com.example.hospital.api.service.DoctorWorkPlanScheduleService;
 import com.example.hospital.api.service.MedicalDeptSubWorkPlanService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.*;
@@ -188,5 +190,17 @@ public class MedicalDeptSubWorkPlanServiceImpl implements MedicalDeptSubWorkPlan
         }
         doctorWorkPlanScheduleService.insert(list);
         return "Query the primary key value of the visit plan";
+    }
+
+    @Override
+    @Transactional
+    public void deleteWorkPlan(int workPlanId) {
+        //Check the number of people registered in the clinic plan
+        Integer num =doctorWorkPlanDao.searchNumById(workPlanId);
+        if (num > 0) {
+            throw new HospitalException("There are already patients registered for this visit plan and deletion is prohibited.");
+        }
+        doctorWorkPlanDao.deleteById(workPlanId);
+        doctorWorkPlanScheduleService.deleteByWorkPlanId(workPlanId);
     }
 }

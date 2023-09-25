@@ -62,4 +62,10 @@
         </foreach>
     </delete>
 
+    <delete id="deleteByWorkPlanId" parameterType="int">
+        DELETE FROM HOSPITAL.DOCTOR_WORK_PLAN_SCHEDULE
+        WHERE "work_plan_id" = ${workPlanId}
+    </delete>
+
+
 </mapper>

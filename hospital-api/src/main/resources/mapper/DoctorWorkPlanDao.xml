@@ -41,9 +41,21 @@
         TO_DATE('${date}'), ${maximum}, 0
         )
     </insert>
+
     <update id="updateMaximum" parameterType="Map">
         UPSERT INTO HOSPITAL.DOCTOR_WORK_PLAN("id", "maximum")
         VALUES(${workPlanId}, ${maximum})
     </update>
+
+    <select id="searchNumById" parameterType="int" resultType="Integer">
+        SELECT "num"
+        FROM HOSPITAL.DOCTOR_WORK_PLAN
+        WHERE "id" = ${id}
+    </select>
+
+    <delete id="deleteById" parameterType="int">
+        DELETE FROM HOSPITAL.DOCTOR_WORK_PLAN
+        WHERE "id" = ${id}
+    </delete>
 
 </mapper>

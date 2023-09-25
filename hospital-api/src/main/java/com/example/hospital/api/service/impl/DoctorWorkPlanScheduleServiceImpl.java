@@ -221,5 +221,17 @@ public class DoctorWorkPlanScheduleServiceImpl implements DoctorWorkPlanSchedule
         return addList;
     }
 
+    @Override
+    @Transactional
+    public void deleteByWorkPlanId(int workPlanId) {
+        ArrayList<HashMap> list = doctorWorkPlanScheduleDao.searchByWorkPlanId(workPlanId);
+        doctorWorkPlanScheduleDao.deleteByWorkPlanId(workPlanId);
+        list.forEach(one -> {
+            int scheduleId = MapUtil.getInt(one, "scheduleId");
+            String key = "doctor_schedule_" + scheduleId;
+            redisTemplate.delete(key);
+        });
+    }
+
 }
 

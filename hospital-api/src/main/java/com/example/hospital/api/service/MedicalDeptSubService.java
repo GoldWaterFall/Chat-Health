@@ -15,4 +15,5 @@ public interface MedicalDeptSubService {
     public void update(MedicalDeptSubEntity entity);
     public void deleteByIds(Integer[] ids);
 
+
 }

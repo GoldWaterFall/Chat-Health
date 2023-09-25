@@ -10,5 +10,9 @@ public interface DoctorWorkPlanScheduleService {
     public void insert(ArrayList<DoctorWorkPlanScheduleEntity> list);
     public ArrayList searchDeptSubSchedule(Map param);
     public HashMap searchByWorkPlanId(int workPlanId);
+
     public void updateSchedule(Map param);
+
+    public void deleteByWorkPlanId(int workPlanId);
 }
+
