@@ -3,5 +3,6 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/hospital-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/hospital-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/patient-wx-api/src/main/resources/apiclient_cert.p12" charset="GBK" />
   </component>
 </project>
