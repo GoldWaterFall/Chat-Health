@@ -13,4 +13,9 @@ public interface UserInfoCardDao {
 
     public HashMap searchUserInfoCard(int userId);
     public int update(UserInfoCardEntity entity);
+
+    public Boolean searchExistFaceModel(int userId);
+    public void updateExistFaceModel(Map param);
+    public Integer searchIdByUserId(int userId);
 }
+

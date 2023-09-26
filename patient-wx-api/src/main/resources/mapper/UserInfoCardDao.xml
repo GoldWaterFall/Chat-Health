@@ -44,4 +44,22 @@
         )
     </update>
 
+    <select id="searchExistFaceModel" parameterType="int" resultType="Boolean">
+        SELECT "exist_face_model" AS "existFaceModel"
+        FROM HOSPITAL.PATIENT_USER_INFO_CARD
+        WHERE "user_id" = ${userId}
+        LIMIT 1
+    </select>
+    <update id="updateExistFaceModel" parameterType="Map">
+        UPSERT INTO HOSPITAL.PATIENT_USER_INFO_CARD(
+        "id", "exist_face_model"
+        )
+        SELECT "id", ${existFaceModel} FROM HOSPITAL.PATIENT_USER_INFO_CARD
+        WHERE "user_id" = ${userId}
+    </update>
+    <select id="searchIdByUserId" parameterType="int" resultType="Integer">
+        SELECT "id" FROM HOSPITAL.PATIENT_USER_INFO_CARD
+        WHERE "user_id" = ${userId}
+    </select>
+
 </mapper>

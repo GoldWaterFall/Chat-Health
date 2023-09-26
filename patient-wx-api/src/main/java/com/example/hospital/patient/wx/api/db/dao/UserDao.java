@@ -12,4 +12,5 @@ public interface UserDao {
     public Integer searchAlreadyRegistered(String openId);
 
     public HashMap searchUserInfo(int userId);
+    public HashMap searchOpenId(int userId);
 }

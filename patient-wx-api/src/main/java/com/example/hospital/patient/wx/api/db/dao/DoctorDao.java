@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public interface DoctorDao {
-
+    public HashMap searchDoctorInfoById(int id);
 }
 
 
