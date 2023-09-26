@@ -3,5 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.hospital.patient.wx.api.db.dao.MedicalDeptDao">
-    
+    <select id="searchMedicalDeptList" parameterType="Map" resultType="HashMap">
+        SELECT "id", "name"
+        FROM HOSPITAL.MEDICAL_DEPT
+        WHERE 1 = 1
+        <if test="recommended!=null">
+            AND "recommended" = #{recommended}
+        </if>
+        <if test="outpatient!=null">
+            AND "outpatient" = #{outpatient}
+        </if>
+    </select>
+
 </mapper>

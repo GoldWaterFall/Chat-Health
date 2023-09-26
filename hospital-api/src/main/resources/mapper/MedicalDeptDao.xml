@@ -97,5 +97,16 @@
             ${one}
         </foreach>
     </delete>
+    <select id="searchMedicalDeptList" parameterType="Map" resultType="HashMap">
+        SELECT "id", "name"
+        FROM HOSPITAL.MEDICAL_DEPT
+        WHERE 1 = 1
+        <if test="recommended!=null">
+            AND "recommended" = #{recommended}
+        </if>
+        <if test="outpatient!=null">
+            AND "outpatient" = #{outpatient}
+        </if>
+    </select>
 
 </mapper>

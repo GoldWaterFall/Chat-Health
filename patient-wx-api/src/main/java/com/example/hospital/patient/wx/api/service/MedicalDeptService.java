@@ -1,14 +1,9 @@
-package com.example.hospital.patient.wx.api.db.dao;
-
+package com.example.hospital.patient.wx.api.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public interface MedicalDeptDao {
+public interface MedicalDeptService {
     public ArrayList<HashMap> searchMedicalDeptList(Map param);
 }
-
-
-
-

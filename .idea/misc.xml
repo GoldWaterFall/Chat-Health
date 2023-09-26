@@ -4,6 +4,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/hospital-api/pom.xml" />
+        <option value="$PROJECT_DIR$/patient-wx-api/pom.xml" />
       </list>
     </option>
   </component>

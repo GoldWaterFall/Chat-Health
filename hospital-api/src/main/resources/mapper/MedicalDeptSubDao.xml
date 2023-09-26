@@ -98,5 +98,10 @@
             ${one}
         </foreach>
     </delete>
+    <select id="searchMedicalDeptSubList" parameterType="int" resultType="HashMap">
+        SELECT "id", "name"
+        FROM HOSPITAL.MEDICAL_DEPT_SUB
+        WHERE "dept_id" = ${deptId}
+    </select>
 
 </mapper>
