@@ -5,5 +5,5 @@ By looking for a suitable solution to ensure the fairness of patients' medical t
 
 This website serves as the code repository of our project during the whole development process. All codes of this project will be uploaded to this webiste continuously to ensure the credibility and transparency of our project programming process, and we will provide instruction for visiters about how to run and use these codes on their own computer.
 
-For more information about this project's background and progress, please visit our homepage on Notion: https://chathealth.notion.site/Computing-Project-Chat-Health-aca913f745784ee8bc74504a27dc789c?pvs=4.
+
 
