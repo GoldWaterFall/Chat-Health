@@ -19,4 +19,11 @@
         AND "password" = #{password}
     </select>
 
+    <select id="searchRefId" parameterType="int" resultType="HashMap">
+        SELECT "job",
+        "ref_id" AS "refId"
+        FROM HOSPITAL.MIS_USER
+        WHERE "id" = ${id}
+    </select>
+
 </mapper>
