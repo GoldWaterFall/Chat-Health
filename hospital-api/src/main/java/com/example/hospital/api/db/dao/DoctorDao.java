@@ -24,6 +24,8 @@ public interface DoctorDao {
 
     public ArrayList<HashMap> searchByDeptSubId(int deptSubId);
 
+    public HashMap searchDataForOnlineCache(int doctorId);
+
 
 }
 
