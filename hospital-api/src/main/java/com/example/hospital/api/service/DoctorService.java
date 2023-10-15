@@ -7,9 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author ShiqiDing
- */
+
 public interface DoctorService {
     public PageUtils searchByPage(Map param);
     public HashMap searchContent(int id);

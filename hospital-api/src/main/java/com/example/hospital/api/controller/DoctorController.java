@@ -23,9 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author ShiqiDing
- */
+
 @RestController
 @RequestMapping("/doctor")
 public class DoctorController {
