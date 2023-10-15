@@ -164,3 +164,10 @@ app.config.globalProperties.isAuth = function(permission) {
 }
 
 app.mount('#app')
+
+Vue.prototype.tencent = {
+    trtc: {
+        appid: "TRTC的APPID"
+	  }
+}
+
