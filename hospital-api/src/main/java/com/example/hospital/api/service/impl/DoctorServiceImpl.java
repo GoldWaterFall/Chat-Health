@@ -24,9 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author ShiqiDing
- */
+
 @Service
 @Slf4j
 public class DoctorServiceImpl implements DoctorService {
