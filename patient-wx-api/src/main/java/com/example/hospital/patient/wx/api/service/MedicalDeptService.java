@@ -6,4 +6,5 @@ import java.util.Map;
 
 public interface MedicalDeptService {
     public ArrayList<HashMap> searchMedicalDeptList(Map param);
+    public HashMap searchDeptAndSub();
 }
