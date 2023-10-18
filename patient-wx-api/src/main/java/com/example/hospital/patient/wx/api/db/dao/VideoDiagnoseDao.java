@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public interface VideoDiagnoseDao {
+    @Transactional
+    public void insert(VideoDiagnoseEntity entity);
+    public HashMap searchByOutTradeNo(String outTradeNo);
     
 }
 
